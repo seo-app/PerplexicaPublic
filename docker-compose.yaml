@@ -6,7 +6,7 @@ services:
     ports:
       - 4000:8080
     networks:
-      - perplexica-network
+      - dokploy-network
     restart: unless-stopped
 
   app:
@@ -20,7 +20,7 @@ services:
     ports:
       - 4001:3000
     networks:
-      - perplexica-network
+      - dokploy-network
     volumes:
       - backend-dbstore:/home/perplexica/data
       - uploads:/home/perplexica/uploads
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
 networks:
-  perplexica-network:
+  dokploy-network:
 
 volumes:
   backend-dbstore:
