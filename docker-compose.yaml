@@ -7,9 +7,9 @@ services:
       - 4000:8080
     networks:
       - dokploy-network
-    restart: unless-stopped
+    restart: always
 
-  app:
+  perplexica:
     image: itzcrazykns1337/perplexica:main
     build:
       context: .
@@ -25,7 +25,7 @@ services:
       - backend-dbstore:/home/perplexica/data
       - uploads:/home/perplexica/uploads
       - ./config.toml:/home/perplexica/config.toml
-    restart: unless-stopped
+    restart: always
 
 networks:
   dokploy-network:
