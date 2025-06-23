@@ -10,6 +10,7 @@ services:
     restart: always
 
   perplexica:
+    image: perplexica
     build:
       context: .
       dockerfile: app.dockerfile

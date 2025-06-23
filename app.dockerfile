@@ -24,16 +24,13 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /home/perplexica/public ./public
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
 
 COPY --from=builder /home/perplexica/.next/standalone ./
 COPY --from=builder /home/perplexica/data ./data
 COPY drizzle ./drizzle
 COPY --from=builder /home/perplexica/migrator/build ./build
 COPY --from=builder /home/perplexica/.next/static ./public/_next/static
-COPY --from=builder --chown=nextjs:nodejs /home/perplexica/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /home/perplexica/.next/standalone ./
+COPY --from=builder /home/perplexica/.next/static ./public/.next/static
 COPY --from=builder /home/perplexica/migrator/index.js ./migrate.js
 
 RUN mkdir /home/perplexica/uploads
